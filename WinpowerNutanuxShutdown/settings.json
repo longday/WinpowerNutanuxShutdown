@@ -1,0 +1,62 @@
+﻿{
+  "CheckIntervalSec": 10,
+  "LowBattaryPercent": 100,
+  "UpsUrls": [
+    "http://localhost:8888/0/json",
+    "http://localhost:8888/1/json"
+  ],
+  "VmGracefulShutdownTimeoutSec": 30,
+  "loginSshCommands": {
+    "RunningVms": "/usr/local/nutanix/bin/acli vm.list power_state=on",
+    "GracefulShutdownVms": "for i in `/usr/local/nutanix/bin/acli vm.list power_state=on | awk '{print $1}' | grep -v ^VM$` ; do /usr/local/nutanix/bin/acli vm.shutdown $i ; done",
+    "ForceShutdownVms": "for i in `/usr/local/nutanix/bin/acli vm.list power_state=on | awk '{print $1}' | grep -v ^VM$` ; do /usr/local/nutanix/bin/acli vm.off $i ; done",
+    "ClusterStatus": "/usr/local/nutanix/cluster/bin/cluster status | grep state",
+    "ClusterStop": "/usr/local/nutanix/cluster/bin/cluster stop",
+    "CvmShutdown": "/usr/bin/virsh shutdown `/usr/bin/virsh list --name`",
+    "NodeShutdown": "/sbin/shutdown -h 2"
+  },
+  "CvmNodes": [
+    {
+      "Host": "192.168.0.1",
+      "Login": "login",
+      "Password": "passw"
+    },
+    {
+      "Host": "192.168.0.2",
+      "Login": "login",
+      "Password": "passw"
+    },
+    {
+      "Host": "192.168.0.3",
+      "Login": "login",
+      "Password": "passw"
+    },
+    {
+      "Host": "192.168.0.4",
+      "Login": "login",
+      "Password": "passw"
+    }
+  ],
+  "RootNodes": [
+    {
+      "Host": "192.168.0.11",
+      "Login": "login",
+      "Password": "passw"
+    },
+    {
+      "Host": "192.168.0.12",
+      "Login": "login",
+      "Password": "passw"
+    },
+    {
+      "Host": "192.168.0.13",
+      "Login": "login",
+      "Password": "passw"
+    },
+    {
+      "Host": "192.168.0.14",
+      "Login": "login",
+      "Password": "passw"
+    }
+  ]
+}
